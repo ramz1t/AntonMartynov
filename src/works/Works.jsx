@@ -29,7 +29,7 @@ const Works = () => {
             name_small: null,
             preview_big: 'zarkov.jpg',
             video_big: 'martini.mp4',
-            id_big: 999,
+            id_big: 1210020395,
             name_big: null,
             title: 'MARTINI',
             text: "A video diary following restaurateur Boris Zarkov on a journey through Piedmont, the birthplace of MARTINI. Searching for inspiration, he retraces the origins of his relationship with the brand, moving through the landscapes, people, and places that shaped it. Framed around Zarkov's own notes, observations, and reflections along the way.",
