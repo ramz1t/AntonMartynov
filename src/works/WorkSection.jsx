@@ -24,13 +24,11 @@ const WorkSection = ({ work }) => {
                 <p className="text-[7.4vw] md:text-[3.3vw] leading-[1] md:leading-[0.9] font-medium md:tracking-[-1.5px]">
                     {work.title}
                 </p>
-                {work?.extra_fields && work.id_small && (
-                    <Facts margin extra_fields={work.extra_fields} />
-                )}
+                <Facts margin extra_fields={work?.extra_fields} />
             </div>
 
             <p className="md:text-2xl leading-[1.2]">{work.text}</p>
-            {work.id_small ? (
+            {work.id_small && (
                 <VideoArea
                     className="max-md:row-start-4"
                     preview={work.preview_small}
@@ -38,8 +36,6 @@ const WorkSection = ({ work }) => {
                     videoId={work.id_small}
                     title={work.name_small}
                 />
-            ) : (
-                <Facts extra_fields={work?.extra_fields} />
             )}
             <VideoArea
                 className="max-md:row-start-3 md:col-start-2 max-md:mb-10 max-md:mt-2"
