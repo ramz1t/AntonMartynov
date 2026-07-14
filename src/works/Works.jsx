@@ -115,7 +115,7 @@ const Works = () => {
             text: 'A documentary series about the comic book industry in Russia, tracing the origins of publishers like BUBBLE — known as "Russia\'s Marvel" — and its expanding cinematic universe. Features interviews with key figures in the industry, including BUBBLE founder Artem Gabrelyanov and actors from the Major Grom franchise. Reached over 5 million views.',
             extra_fields: [
                 ['agency', 'stereotactic'],
-                ['role', 'explainer / video director'],
+                ['role', 'explainer video director'],
             ],
         },
     ]
