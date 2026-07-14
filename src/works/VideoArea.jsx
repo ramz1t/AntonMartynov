@@ -68,7 +68,7 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                     className="hover:cursor-pointer w-full aspect-video"
                     onClick={() => setOpen(true)}
                     onMouseEnter={() => {
-                        isTablet && setInitialState(false)
+                        // isTablet && setInitialState(false)
                         videoRef.current && isTablet && videoRef.current.play()
                     }}
                     onMouseLeave={() => {
@@ -106,11 +106,11 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                     )}
                 </div>
 
-                {title && (
+                {/* {title && (
                     <p className="pt-3 text-neutral-500 text-xl leading-tight">
                         {title}
                     </p>
-                )}
+                )}*/}
             </div>
 
             <div
