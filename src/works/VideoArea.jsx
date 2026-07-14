@@ -106,7 +106,11 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                     )}
                 </div>
 
-                {title && <p className="pt-3 md:text-lg">{title}</p>}
+                {title && (
+                    <p className="pt-3 text-neutral-500 text-xl leading-tight">
+                        {title}
+                    </p>
+                )}
             </div>
 
             <div
