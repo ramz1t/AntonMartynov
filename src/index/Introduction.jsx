@@ -23,6 +23,12 @@ const Introduction = () => {
         }
     }, [])
 
+    const start = new Date('2019-06-01')
+    const today = new Date()
+    const inMilliseconds = today - start
+    const inYears = inMilliseconds / 31557600000
+    const n = Math.floor(inYears)
+
     return (
         <Suspense>
             <div
@@ -38,8 +44,8 @@ const Introduction = () => {
                     // handler={() => setActive(true)}
                 >
                     HI! MY NAME IS ANTON.
-                    <br />I AM VIDEO EDITOR & DIRECTOR
-                    {isTablet && <br />} WITH OVER {!isTablet && <br />} 5 YEARS
+                    <br />I AM A VIDEO EDITOR & DIRECTOR
+                    {isTablet && <br />} WITH OVER {!isTablet && <br />} {n} YEARS
                     OF EXPERIENCE.
                     <br />
                     {!isTablet && <br />}BASED IN SWEDEN.

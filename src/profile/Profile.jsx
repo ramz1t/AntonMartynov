@@ -26,7 +26,7 @@ const Profile = () => {
                     <br />
                     <a
                         className="hover:opacity-70 transition-opacity duration-75"
-                        href="https://www.instagram.com/martynovxas/"
+                        href="https://www.instagram.com/antoncekc777/"
                         target="_blank"
                     >
                         INSTAGRAM

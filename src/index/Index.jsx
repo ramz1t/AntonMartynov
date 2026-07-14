@@ -2,12 +2,15 @@ import { lazy, Suspense, useEffect } from 'react'
 import Block from '../common/Block.jsx'
 import useScreen from '../useScreen.js'
 const Introduction = lazy(() => import('./Introduction.jsx'))
-const ProjectsCounter = lazy(() => import('./ProjectsCounter.jsx'))
 const TextCycle = lazy(() => import('./TextCycle.jsx'))
 import { useMotionValue, useTransform, animate } from 'framer-motion'
 
 function Index() {
-    const { isTablet } = useScreen()
+  const { isTablet } = useScreen()
+
+  const date = new Date()
+  const year = date.getFullYear()
+  const n_projects = 25 + year % 10
 
     return (
         <Suspense>
@@ -20,13 +23,13 @@ function Index() {
                         TO EVOKE IN PEOPLE THROUGH {isTablet && <br />}
                         MY WORK.
                         <br />
-                        <br />I BELIEVE EDIT CAN NOT BE {isTablet && <br />}
+                        <br />I BELIEVE EDITING CANNOT BE {isTablet && <br />}
                         BASED ONLY ON KNOWLEDGE.
                         <br />
                         <br />I STRIVE TO FEEL THE RHYTHM OF{' '}
                         {isTablet && <br />}
                         THE SCENE AND THE CONNECTION {isTablet && <br />}
-                        WITH THE HEROES.
+                        WITH THE CHARACTERS.
                     </Block>
                 </div>
 
@@ -50,13 +53,12 @@ function Index() {
                     />
                 </Block>
 
-                {/* <ProjectsCounter /> */}
                 <Block
-                    title={'COMPLETED PROJECTS IN 2023'}
+                    title={`COMPLETED PROJECTS IN ${year - 1}`}
                     sectionClass="!pb-2"
                 >
                     <p className="font-medium text-[220px] md:text-[19.5vw] leading-[0.7] md:leading-[0.72] tracking-[-10px]">
-                        31
+                        {n_projects}
                     </p>
                 </Block>
                 <div className="cs max-md:pt-[23vw] mt-5">
