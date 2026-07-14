@@ -3,7 +3,7 @@ import { Cross as Hamburger } from 'hamburger-react'
 import useScreen from '../useScreen.js'
 import Player from '@vimeo/player'
 
-const VideoArea = ({ preview, src, videoId, className, title }) => {
+const VideoArea = ({ preview, src, videoId, className = '', title }) => {
     const [initialState, setInitialState] = useState(true)
     const [open, setOpen] = useState(false)
     const { isTablet } = useScreen()
@@ -11,6 +11,19 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
 
     const playerRef = useRef(null)
     const [player, setPlayer] = useState(null)
+    const [videoAspectRatio, setVideoAspectRatio] = useState(16 / 9)
+    const [coverAspectRatio, setCoverAspectRatio] = useState(16 / 9)
+
+    useEffect(() => {
+        if (!preview) return
+        const img = new Image()
+        img.onload = () => {
+            if (img.naturalWidth && img.naturalHeight) {
+                setCoverAspectRatio(img.naturalWidth / img.naturalHeight)
+            }
+        }
+        img.src = '/previews/' + preview
+    }, [preview])
 
     useEffect(() => {
         const handleKeyDown = (e) => {
@@ -31,6 +44,13 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                 responsive: true,
             })
             await newPlayer.loadVideo({ id: videoId })
+            const [width, height] = await Promise.all([
+                newPlayer.getVideoWidth(),
+                newPlayer.getVideoHeight(),
+            ])
+            if (width && height) {
+                setVideoAspectRatio(width / height)
+            }
             setPlayer(newPlayer)
         }
 
@@ -58,14 +78,10 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
 
     return (
         <>
-            <div
-                className={
-                    'h-fit relative flex flex-col aspect-video w-full ' +
-                    className
-                }
-            >
+            <div className={'relative flex flex-col w-full ' + className}>
                 <div
-                    className="hover:cursor-pointer w-full aspect-video"
+                    className="hover:cursor-pointer relative w-full"
+                    style={{ aspectRatio: coverAspectRatio }}
                     onClick={() => setOpen(true)}
                     onMouseEnter={() => {
                         src && isTablet && setInitialState(false)
@@ -79,7 +95,7 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                     {isTablet && (
                         <img
                             src={'/previews/' + preview}
-                            className="aspect-video absolute top-0 left-0 transition-opacity duration-300 w-full"
+                            className="absolute top-0 left-0 h-full w-full object-cover transition-opacity duration-300"
                             style={{
                                 opacity: initialState ? 1 : 0,
                             }}
@@ -91,18 +107,16 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                             src={'/videos/' + src}
                             loop={true}
                             muted
-                            className="p-px"
+                            className="w-full h-full object-cover p-px"
                         />
                     ) : (
-                        <div className="aspect-video">
-                            <iframe
-                                src={`https://player.vimeo.com/video/${videoId}?title=0&byline=0&portrait=0`}
-                                frameBorder="0"
-                                allow="autoplay; fullscreen; picture-in-picture"
-                                className="w-full h-full"
-                                allowFullScreen
-                            ></iframe>
-                        </div>
+                        <iframe
+                            src={`https://player.vimeo.com/video/${videoId}?title=0&byline=0&portrait=0`}
+                            frameBorder="0"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            className="w-full h-full"
+                            allowFullScreen
+                        ></iframe>
                     )}
                 </div>
 
@@ -132,7 +146,10 @@ const VideoArea = ({ preview, src, videoId, className, title }) => {
                     />
                 </div>
                 <div
-                    className="w-[90%] h-[90%] grid "
+                    className="grid mx-auto"
+                    style={{
+                        width: `min(90vw, 90vh * ${videoAspectRatio})`,
+                    }}
                     ref={playerRef}
                     data-vimeo-id={videoId}
                 ></div>

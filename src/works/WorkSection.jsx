@@ -28,22 +28,45 @@ const WorkSection = ({ work }) => {
             </div>
 
             <p className="md:text-2xl leading-[1.2]">{work.text}</p>
-            {work.id_small && (
-                <VideoArea
-                    className="max-md:row-start-4"
-                    preview={work.preview_small}
-                    src={work.video_small}
-                    videoId={work.id_small}
-                    title={work.name_small}
-                />
+            {work?.vertical ? (
+                <div className="max-md:row-start-3 md:col-start-2 grid grid-cols-[1fr_1fr] gap-3 md:gap-7 max-md:mb-10 max-md:mt-2">
+                    {work.id_small && (
+                        <VideoArea
+                            fitHeight
+                            preview={work.preview_small}
+                            src={work.video_small}
+                            videoId={work.id_small}
+                            title={work.name_small}
+                        />
+                    )}
+                    <VideoArea
+                        fitHeight
+                        preview={work.preview_big}
+                        src={work.video_big}
+                        videoId={work.id_big}
+                        title={work.name_big}
+                    />
+                </div>
+            ) : (
+                <>
+                    {work.id_small && (
+                        <VideoArea
+                            className="max-md:row-start-4"
+                            preview={work.preview_small}
+                            src={work.video_small}
+                            videoId={work.id_small}
+                            title={work.name_small}
+                        />
+                    )}
+                    <VideoArea
+                        className="max-md:row-start-3 md:col-start-2 max-md:mb-10 max-md:mt-2"
+                        preview={work.preview_big}
+                        src={work.video_big}
+                        videoId={work.id_big}
+                        title={work.name_big}
+                    />
+                </>
             )}
-            <VideoArea
-                className="max-md:row-start-3 md:col-start-2 max-md:mb-10 max-md:mt-2"
-                preview={work.preview_big}
-                src={work.video_big}
-                videoId={work.id_big}
-                title={work.name_big}
-            />
         </li>
     )
 }
