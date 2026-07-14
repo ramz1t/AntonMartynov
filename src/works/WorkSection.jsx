@@ -9,17 +9,17 @@ const WorkSection = ({ work }) => {
             <p className="md:text-2xl leading-[1.2]">{work.text}</p>
             <VideoArea
                 className="max-md:row-start-4"
-                preview={work.preview1}
-                src={work.video1}
-                videoId={work.id1}
-                title={work.name1}
+                preview={work.preview_small}
+                src={work.video_small}
+                videoId={work.id_small}
+                title={work.name_small}
             />
             <VideoArea
                 className="max-md:row-start-3 max-md:mb-10 max-md:mt-2"
-                preview={work.preview2}
-                src={work.video2}
-                videoId={work.id2}
-                title={work.name2}
+                preview={work.preview_big}
+                src={work.video_big}
+                videoId={work.id_big}
+                title={work.name_big}
             />
         </li>
     )
