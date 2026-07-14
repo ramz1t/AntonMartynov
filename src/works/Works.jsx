@@ -109,7 +109,7 @@ const Works = () => {
             name_small: null,
             preview_big: 'bdysh.png',
             video_big: 'bdysh.mp4',
-            id_big: 1210001722,
+            id_big: 1159649408,
             name_big: null,
             title: 'BDYSH!',
             text: 'A documentary series about the comic book industry in Russia, tracing the origins of publishers like BUBBLE — known as "Russia\'s Marvel" — and its expanding cinematic universe. Features interviews with key figures in the industry, including BUBBLE founder Artem Gabrelyanov and actors from the Major Grom franchise. Reached over 5 million views.',
