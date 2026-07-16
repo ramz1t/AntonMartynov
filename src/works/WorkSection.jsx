@@ -5,7 +5,7 @@ const Facts = ({ extra_fields, margin }) => {
     if (!extra_fields) return
     return (
         <div
-            className={`grid h-fit grid-cols-[1fr_1fr] text-neutral-500 text-xl leading-tight ${margin ? 'mt-auto pt-5' : null}`}
+            className={`grid h-fit grid-cols-[1fr_1fr] opacity-30 text-xl leading-tight ${margin ? 'mt-auto pt-5' : null}`}
         >
             {extra_fields.map(([label, value], key) => (
                 <React.Fragment key={key}>
@@ -27,7 +27,11 @@ const WorkSection = ({ work }) => {
                 <Facts margin extra_fields={work?.extra_fields} />
             </div>
 
-            <p className="md:text-2xl leading-[1.2]">{work.text}</p>
+            <span className="md:text-2xl leading-[1.2] grid gap-2">
+                {work.text.split('\n').map((part, key) => (
+                    <p key={key}>{part}</p>
+                ))}
+            </span>
             {work?.vertical ? (
                 <div className="max-md:row-start-3 md:col-start-2 grid grid-cols-[1fr_1fr] gap-3 md:gap-7 max-md:mb-10 max-md:mt-2">
                     {work.id_small && (
