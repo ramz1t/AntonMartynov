@@ -51,7 +51,7 @@ const Works = () => {
             text: "A series of videos for Russia's largest bank, profiling real people who built careers around their passions. Each video has its own visual style and pacing, shaped around the subject's story and personality.",
             extra_fields: [
                 ['agency', 'agenda'],
-                ['role', 'editing'],
+                ['role', 'directing / editing'],
             ],
         },
         {
